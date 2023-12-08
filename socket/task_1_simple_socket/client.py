@@ -8,6 +8,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     msg = input('Enter something: ')
     message = msg.encode('utf-8')
     s.send(message)
-    data = s.recv(1024)
-
-print(f"Received {data!r}")

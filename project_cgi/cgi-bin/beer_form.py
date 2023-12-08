@@ -1,10 +1,40 @@
 #!/usr/bin/env python3
 import cgi
-import html  # Import the html module for escaping
+import cgitb
+import html
+import http.cookies
+import os
+
+cgitb.enable()
+
+form = cgi.FieldStorage()
+
+delete_cookies = form.getvalue("delete_cookies")
+
+if delete_cookies:
+    print("Set-Cookie: form_counter=0")
+    form_counter_from_cookie = 0
+else:
+    cookies = http.cookies.SimpleCookie(os.environ.get("HTTP_COOKIE"))
+
+    form_counter = int(cookies.get("form_counter", "0").value)
+    form_counter += 1
+
+    cookies["form_counter"] = form_counter
+
+    print("Set-Cookie: form_counter={}".format(form_counter))
+
+    form_counter_from_cookie = int(cookies.get("form_counter", "0").value)
 
 print("Content-type: text/html\n")
 
-form = cgi.FieldStorage()
+
+def get_form_value(field_name):
+    if field_name in form:
+        return form[field_name].value
+    else:
+        return None
+
 
 # Get and escape form values
 beer_name = html.escape(form.getvalue("beer_name", ""))
@@ -29,11 +59,17 @@ print("""
     <p><strong>Beer Type:</strong> {1}</p>
     <p><strong>Food Pairing:</strong> {2}</p>
     <p><strong>Beer Rating:</strong> {3}</p>
+    <p><strong>Form Submission Counter:</strong> {4}</p>
+
+    <form action="/cgi-bin/beer_form.py" method="post">
+        <input type="submit" name="delete_cookies" value="Delete Cookies">
+    </form>
 </body>
 </html>
 """.format(
     beer_name,
     beer_type,
     food_pairing_str,
-    beer_rating
+    beer_rating,
+    form_counter_from_cookie
 ))

@@ -10,5 +10,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         message = msg.encode('utf-8')
         s.send(message)
 
+        if msg.lower() == "exit":
+            break
+
         data = s.recv(1024)
         print(f"Received from server: {data.decode('utf-8')}")

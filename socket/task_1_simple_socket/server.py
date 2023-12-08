@@ -14,10 +14,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = conn.recv(1024)
             if not data:
                 break
-            print(f"Received from client: {data.decode('utf-8')}")
+
+            message = data.decode('utf-8')
+            print(f"Received from client: {message}")
+
+            if message.lower() == "exit":
+                break
 
             time.sleep(5)
-            response = "Server received: " + data.decode('utf-8')
+            response = "Server received: " + message
             conn.send(response.encode('utf-8'))
 
 print("Connection with client closed.")

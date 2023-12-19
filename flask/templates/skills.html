@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Skills{% endblock %}
+
+{% block content %}
+    <h2>My Skills</h2>
+
+    {% if skills %}
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+        <p>Total number of skills: {{ total_skills }}</p>
+    {% else %}
+        <p>Information about skills is not available.</p>
+    {% endif %}
+
+    {% if skill %}
+        <h3>Skill #{{ loop.index }}</h3>
+        <p>{{ skill }}</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,36 @@
+<!-- page2.html (Cute Kittens theme) -->
+{% extends 'base.html' %}
+
+{% block title %}Cute Kittens Page{% endblock %}
+
+{% block content %}
+    <h2>Welcome to the Cute Kittens Page</h2>
+    <p>Get ready for cuteness overload with adorable kittens!</p>
+    <img src="https://placekitten.com/800/400" alt="Cute Kitten Image">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Breed</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Whiskers</td>
+                <td>Tabby</td>
+                <td>2 years</td>
+            </tr>
+            <tr>
+                <td>Mittens</td>
+                <td>Siamese</td>
+                <td>1.5 years</td>
+            </tr>
+            <tr>
+                <td>Fluffy</td>
+                <td>Persian</td>
+                <td>3 years</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

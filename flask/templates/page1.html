@@ -1,0 +1,49 @@
+<!-- page1.html (Portfolio theme) -->
+{% extends 'base.html' %}
+
+{% block title %}My Portfolio{% endblock %}
+
+{% block content %}
+    <h2>Welcome to My Portfolio</h2>
+    <p>Explore my latest projects and skills.</p>
+    <img src="static/images/portfolio.jpeg" alt="Portfolio Image">
+
+    <section>
+        <h3>Projects</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Description</th>
+                    <th>Technologies Used</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Web Development Showcase</td>
+                    <td>A responsive website showcasing various web development projects.</td>
+                    <td>HTML, CSS, JavaScript</td>
+                </tr>
+                <tr>
+                    <td>Data Analysis Dashboard</td>
+                    <td>An interactive dashboard for visualizing and analyzing data.</td>
+                    <td>Python, Pandas, Plotly</td>
+                </tr>
+                <tr>
+                    <td>Personal Blog</td>
+                    <td>A blog platform to share thoughts and experiences.</td>
+                    <td>Node.js, Express, MongoDB</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Skills</h3>
+        <ul>
+            <li>Web Development</li>
+            <li>Python Programming</li>
+            <li>Data Analysis</li>
+        </ul>
+    </section>
+{% endblock %}
